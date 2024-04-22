@@ -41,6 +41,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onAddTask }) => {
         id="addtask-modal"
         isOpen={modalVisible}
         onWillDismiss={() => setModalVisible(false)}
+        keyboardClose={false}
       >
         <IonToolbar>
           <IonButtons slot="end">
