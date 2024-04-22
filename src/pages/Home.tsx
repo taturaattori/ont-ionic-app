@@ -1,59 +1,33 @@
-import MessageListItem from '../components/MessageListItem';
-import { useState } from 'react';
-import { Message, getMessages } from '../data/messages';
-import {
-  IonContent,
-  IonHeader,
-  IonList,
-  IonPage,
-  IonRefresher,
-  IonRefresherContent,
-  IonTitle,
-  IonToolbar,
-  useIonViewWillEnter
-} from '@ionic/react';
-import './Home.css';
+import React, { useState } from "react";
+import AddTask, { Task } from "../components/AddTask";
+import TaskList from "../components/TaskList";
+import ClearTasks from "../components/ClearTasks";
+import "./Home.css";
+import Header from "../components/Header";
+import { IonContent, IonRow } from "@ionic/react";
 
 const Home: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-  const [messages, setMessages] = useState<Message[]>([]);
+  const addTask = (newTask: Task) => {
+    setTasks([...tasks, newTask]);
+  };
 
-  useIonViewWillEnter(() => {
-    const msgs = getMessages();
-    setMessages(msgs);
-  });
-
-  const refresh = (e: CustomEvent) => {
-    setTimeout(() => {
-      e.detail.complete();
-    }, 3000);
+  const clearTasks = () => {
+    setTasks([]);
   };
 
   return (
-    <IonPage id="home-page">
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonRefresher slot="fixed" onIonRefresh={refresh}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
-
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">
-              Inbox
-            </IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
-        <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
-        </IonList>
+    <>
+      <Header title="Task Manager" />
+      <IonContent className="ion-padding" scrollY={false}>
+        <IonRow class="ion-justify-content-center ion-padding">
+          <AddTask onAddTask={addTask} />
+          <ClearTasks onClearTasks={clearTasks} />
+        </IonRow>
+        <TaskList tasks={tasks} setTasks={setTasks} />
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 

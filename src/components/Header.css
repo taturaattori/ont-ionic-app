@@ -1,0 +1,9 @@
+ion-toolbar {
+  --background: #9deadc;
+  --color: "black";
+  --min-height: 50px;
+}
+
+ion-title {
+  font-size: 22px;
+}

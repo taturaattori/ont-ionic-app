@@ -1,0 +1,8 @@
+ion-content {
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+ion-item#list-item {
+  --background: #9deadc;
+}
