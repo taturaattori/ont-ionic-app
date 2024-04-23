@@ -7,7 +7,13 @@ import Header from "../components/Header";
 import { IonContent, IonRow } from "@ionic/react";
 
 const Home: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([
+    { name: "Siivous", status: false },
+    { name: "Treeni", status: false },
+    { name: "Kauppa", status: true },
+    { name: "Opiskelu", status: false },
+    { name: "Roskat", status: true },
+  ]);
 
   const addTask = (newTask: Task) => {
     setTasks([...tasks, newTask]);
