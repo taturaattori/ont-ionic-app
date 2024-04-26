@@ -12,8 +12,8 @@ const ClearTasks: React.FC<ClearTasksProps> = ({ onClearTasks }) => {
   };
 
   return (
-    <IonButton onClick={handleClearTasks} id="clear-button">
-      Clear all
+    <IonButton onClick={handleClearTasks} id="clear-button" size="small">
+      Poista kaikki
     </IonButton>
   );
 };

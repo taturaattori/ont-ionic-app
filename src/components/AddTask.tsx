@@ -67,8 +67,12 @@ const AddTask: React.FC<AddTaskProps> = ({ onAddTask }) => {
           Add Task
         </IonButton>
       </IonModal>
-      <IonButton onClick={() => setModalVisible(true)} id="add-buttons">
-        Add a task
+      <IonButton
+        onClick={() => setModalVisible(true)}
+        id="add-buttons"
+        size="small"
+      >
+        Lisää tehtävä
       </IonButton>
     </>
   );
